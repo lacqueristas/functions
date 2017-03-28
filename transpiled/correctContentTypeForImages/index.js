@@ -16,6 +16,7 @@ var googleStorageClient = (0, _storage2.default)();
 function correctContentTypeForImages(event, callback) {
   var data = event.data;
   var name = event.name;
+  var ContentType = event.ContentType;
   var resourceState = data.resourceState;
 
   var isDelete = resourceState === "not_exists";
@@ -24,7 +25,7 @@ function correctContentTypeForImages(event, callback) {
     return callback();
   }
 
-  console.log(data);
+  console.log({ event: event, data: data });
 
   return callback();
 }
