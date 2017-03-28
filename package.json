@@ -50,6 +50,6 @@
     "bunyan": "1.8.9",
     "npm-run-all": "4.0.2",
     "ramda": "0.23.0",
-    "ramda-extra": "4.0.0"
+    "ramda-extra": "4.0.1"
   }
 }
