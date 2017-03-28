@@ -4,6 +4,7 @@ const googleStorageClient = googleStorage()
 
 export default function correctContentTypeForImages (event: Object, callback: Function): any {
   const {data} = event
+  const {name} = event
   const {resourceState} = data
   const isDelete = resourceState === "not_exists"
 
