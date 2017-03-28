@@ -1,0 +1,25 @@
+{
+  "name": "correctContentTypeForImages",
+  "version": "1.0.0",
+  "description": "Rewrite the Content-Type of images to the correct type.",
+  "homepage": "https://github.com/lacqueristas/functions#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lacqueristas/functions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lacqueristas/functions/issues"
+  },
+  "keywords": [
+    "functions",
+    "google-cloud"
+  ],
+  "author": "Kurtis Rainbolt-Greene <kurtis@rainbolt-greene.online>",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "0.8.0",
+    "bunyan": "1.8.9",
+    "ramda": "0.23.0",
+    "ramda-extra": "4.0.0"
+  }
+}

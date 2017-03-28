@@ -17,7 +17,7 @@
   "author": "Kurtis Rainbolt-Greene <kurtis@rainbolt-greene.online>",
   "license": "ISC",
   "scripts": {
-    "build": "babel './source/' --out-dir './transpiled/'",
+    "build": "babel './source/' --copy-files --out-dir './transpiled/'",
     "watch": "npm-run-all --parallel watch:build watch:lint watch:test",
     "watch:lint": "chokidar './source/' --ignore '/node_modules/' --command 'npm run lint --silent'",
     "watch:test": "chokidar './source/' --ignore '/node_modules/' --command 'npm run test --silent'",
