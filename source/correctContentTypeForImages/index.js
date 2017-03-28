@@ -14,27 +14,34 @@ export default function correctContentTypeForImages (event: Object, callback: Fu
   const {bucket} = data
 
   if (isDelete(data)) {
-    return callback()
+    return callback({
+      type: "error",
+      message: "is delete",
+    })
   }
 
-  if (isOctetStream(data)) {
-    console.log("Reading from bucket file...")
-    const from = googleStorageClient
-      .bucket(bucket)
-      .file(name)
-      .createReadStream()
-
-    return imageMagick(from)
-      .identify(function format (error: any, information: Object): any {
-        if (error) {
-          return callback()
-        }
-
-        console.log({information})
-
-        return callback()
-      })
+  if (!isOctetStream(data)) {
+    return callback({
+      type: "error",
+      message: "not application/octet-stream",
+    })
   }
 
-  return callback()
+  const from = googleStorageClient
+    .bucket(bucket)
+    .file(name)
+
+  return imageMagick(from.createReadStream())
+    .identify(function format (error: any, information: Object): any {
+      if (error) {
+        return callback({
+          type: "error",
+          message: error,
+        })
+      }
+
+      const contentType = information["Mime type"]
+
+      return from.setMetadata({contentType}, callback)
+    })
 }

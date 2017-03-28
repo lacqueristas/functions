@@ -30,23 +30,31 @@ function correctContentTypeForImages(event, callback) {
 
 
   if (isDelete(data)) {
-    return callback();
-  }
-
-  if (isOctetStream(data)) {
-    console.log("Reading from bucket file...");
-    var from = googleStorageClient.bucket(bucket).file(name).createReadStream();
-
-    return imageMagick(from).identify(function format(error, information) {
-      if (error) {
-        return callback();
-      }
-
-      console.log({ information: information });
-
-      return callback();
+    return callback({
+      type: "error",
+      message: "is delete"
     });
   }
 
-  return callback();
+  if (!isOctetStream(data)) {
+    return callback({
+      type: "error",
+      message: "not application/octet-stream"
+    });
+  }
+
+  var from = googleStorageClient.bucket(bucket).file(name);
+
+  return imageMagick(from.createReadStream()).identify(function format(error, information) {
+    if (error) {
+      return callback({
+        type: "error",
+        message: error
+      });
+    }
+
+    var contentType = information["Mime type"];
+
+    return from.setMetadata({ contentType: contentType }, callback);
+  });
 }
