@@ -18,13 +18,14 @@ export default function correctContentTypeForImages (event: Object, callback: Fu
   }
 
   if (isOctetStream(data)) {
+    console.log("Reading from bucket file...")
     const from = googleStorageClient
       .bucket(bucket)
       .file(name)
       .createReadStream()
 
     return imageMagick(from)
-      .identify({bufferStream: true}, function format (error: any, information: Object): any {
+      .identify(function format (error: any, information: Object): any {
         if (error) {
           return callback()
         }

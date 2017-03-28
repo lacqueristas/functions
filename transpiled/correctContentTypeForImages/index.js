@@ -34,9 +34,10 @@ function correctContentTypeForImages(event, callback) {
   }
 
   if (isOctetStream(data)) {
+    console.log("Reading from bucket file...");
     var from = googleStorageClient.bucket(bucket).file(name).createReadStream();
 
-    return imageMagick(from).identify({ bufferStream: true }, function format(error, information) {
+    return imageMagick(from).identify(function format(error, information) {
       if (error) {
         return callback();
       }
