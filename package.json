@@ -38,8 +38,6 @@
     "flow": "0.2.3",
     "flow-bin": "0.42.0",
     "flow-typed": "2.0.0",
-    "greenkeeper": "4.2.1",
-    "npm-check-updates": "2.10.4",
     "tap": "10.3.0"
   },
   "dependencies": {
