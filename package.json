@@ -38,7 +38,7 @@
     "flow": "0.2.3",
     "flow-bin": "0.42.0",
     "flow-typed": "2.0.0",
-    "tap": "10.3.0"
+    "tap": "10.3.2"
   },
   "dependencies": {
     "@google-cloud/storage": "0.8.0",
