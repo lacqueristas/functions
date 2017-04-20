@@ -37,7 +37,7 @@
     "babel-tap": "5.0.0",
     "flow": "0.2.3",
     "flow-bin": "0.42.0",
-    "flow-typed": "2.0.0",
+    "flow-typed": "2.1.0",
     "tap": "10.3.0"
   },
   "dependencies": {
